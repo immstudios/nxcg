@@ -8,11 +8,11 @@ class Fonts():
 
     def __getitem__(self, key):
         if not key in self.data:
-            font = self.__getfont(key)
+            font = self.get_font(key)
             self.data[key] = font
         return self.data[key]
 
-    def __getfont(self, font_description):
+    def get_font(self, font_description):
         return Pango.FontDescription(font_description)
 
 fonts = Fonts()

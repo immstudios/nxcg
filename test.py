@@ -8,6 +8,7 @@
 # All photos on StockSnap fall under the Creative Commons CC0 license.
 #
 
+import os
 import time
 
 from nxcg import *

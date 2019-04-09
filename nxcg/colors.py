@@ -3,41 +3,48 @@ __all__ = ["COLOR_PRESETS", "FALLBACK_COLOR", "colors"]
 FALLBACK_COLOR = (.7, .7, .7, 1)
 
 COLOR_PRESETS = {
-    "iron"            : "#807C8B",
+    "iron"            : "#807c8b",
     "graphite"        : "#454343",
     "graphite dark"   : "#353333",
-    "steel"           : "#536B77",
-    "gold"            : "#FBB829",
-    "cyan"            : "#00B4FF",
-    "orange"          : "#FF6600",
-    "red"             : "#CC0000",
-    "green"           : "#A1C820",
-    "blue"            : "#025D8C",
-    "yellow"          : "#EDDE45",
+    "steel"           : "#536b77",
+    "gold"            : "#fbb829",
+    "cyan"            : "#00b4ff",
+    "orange"          : "#ff6600",
+    "red"             : "#cc0000",
+    "green"           : "#a1c820",
+    "blue"            : "#025d8c",
+    "yellow"          : "#edde45",
 
-    # TV broadcast related color presets
+    # tv broadcast related color presets
 
-    "white" : "#EBEBEB",
+    "white" : "#ebebeb",
     "black" : "#101010",
 
     "black glass 60"  : "#00000099",
-    "black glass 65"  : "#000000A6",
-    "black glass 70"  : "#000000B3",
-    "black glass 75"  : "#000000CC",
-    "black glass 80"  : "#000000E6",
+    "black glass 65"  : "#000000a6",
+    "black glass 70"  : "#000000b3",
+    "black glass 75"  : "#000000cc",
+    "black glass 80"  : "#000000e6",
 
-    "logo gray"       : "#F5F5F5B3",
+    "logo gray"       : "#f5f5f5b3",
 
-    # Pantone colors of past years
+    # pantone colors of past years
 
-    "emerald"         : "#009B77",
-    "tangerine"       : "#DD4124",
-    "honeysuckle"     : "#D65076",
-    "turquoise"       : "#45B8AC",
-    "mimosa"          : "#EFC050",
-    "blue izis"       : "#5B5EA6",
-    "pepper"          : "#9B2335",
-    "sand"            : "#DFCFBE",
+    "living coral"    : "#ff6d70", # Color of the year 2019
+    "ultra violet"    : "#654ea3", # Color of the year 2018
+    "greenery"        : "#84BD00", # Color of the year 2017
+    "rose quartz"     : "#F2DDDE", # Color of the year 2016
+    "serenity"        : "#89ABE3", # Color of the year 2016
+    "marsala"         : "#AD655F", # Color of the year 2015
+    "radiant orchid"  : "#B565A7", # Color of the year 2014
+    "emerald"         : "#009b77", # Color of the year 2013
+    "tangerine"       : "#dd4124", # Color of the year 2012 (Tangerine tango)
+    "honeysuckle"     : "#d65076", # Color of the year 2011
+    "turquoise"       : "#45b8ac", # Color of the year 2010
+    "mimosa"          : "#efc050", # Color of the year 2009
+    "blue iris"       : "#5b5ea6", # Color of the year 2008
+    "pepper"          : "#9b2335", # Color of the year 2007
+    "sand"            : "#dfcfbe", # Color of the year 2006
     }
 
 

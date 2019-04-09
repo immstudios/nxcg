@@ -9,7 +9,6 @@ class PluginLibrary(object):
     def __init__(self, parent, dirs=False):
         dirs = dirs or ["plugins"]
         self.parent = parent
-        logging.info("Loading NXCG Plugin library")
         self.plugins = []
         self.plugin_list = []
         for pdir in dirs:
@@ -21,19 +20,19 @@ class PluginLibrary(object):
     def load_plugin(self, pdir, fname):
         ppath = os.path.join(pdir, fname)
         mod_name, file_ext = os.path.splitext(fname)
-        if file_ext not in [".py", ".pyc"]:
+        if file_ext != ".py":
             return
 
-        if file_ext == ".pyc" and os.path.exists(ppath):
-            return
-
-        if file_ext == ".pyc":
-            py_mod = imp.load_compiled(mod_name, ppath)
-        else:
+        try:
             py_mod = imp.load_source(mod_name, ppath)
+        except Exception:
+            log_traceback("Unable to load NXCG plugin {}".format(mod_name))
+            return
 
         if not "Plugin" in dir(py_mod):
             logging.warning("No plugin class found in {}".format(fname))
+            return
+        logging.info("Loaded NXCG plugin {}".format(mod_name))
         self.plugins.append(py_mod.Plugin(self.parent))
         self.plugin_list.append(ppath)
 

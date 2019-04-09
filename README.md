@@ -5,23 +5,16 @@ This library combines power of PIL (or Pillow), PyCairo and Pango and focuses on
 
 ## Installation
 
-### Requirements
-
-- PIL
-- PyCairo
-- PangoCairo
-- NumPy
-
 ```bash
-apt-get install python-cairo python-gtk2 python-imaging python-numpy
+apt install -y python3 python3-pip
+apt install -y python3-pil python3-cairo gir1.2-gtk-3.0 python3-gi-cairo
+pip3 install nxtools
 ```
 
 ## Basic usage
 
 Hello world
 ```python
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 from nxcg import *
 
@@ -39,8 +32,3 @@ See NXTV sources for more advanced usage tips and underlying libraries documenta
 
  - http://www.pygtk.org/pygtk2reference/class-pangolayout.html
  - https://developer.gnome.org/pygtk/stable/pango-markup-language.html
-
-### Notes
- - Loading non-png glyphs is quite slow.
-   For real-time or near real time graphics use PNG or cache images in advance.
-
