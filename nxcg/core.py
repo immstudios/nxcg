@@ -4,7 +4,6 @@ from io import StringIO
 
 from .common import *
 from .colors import *
-from .glyph import *
 from .fonts import *
 from .plugins import *
 from .safe_area import *
@@ -109,14 +108,13 @@ class CG(object):
 
 
     def glyph(self, g, x=0, y=0, **kwargs):
-        w = kwargs.get("w", False)
-        h = kwargs.get("h", False)
-        alignment = kwargs.get("alignment", 0)
-        if type(g) in string_types:
-            g = glyph(g, w=w, h=h)
-        if not g and type(g) != cairo.ImageSurface:
-            return False
+        alignment = kwargs.get("alignment", 7)
+        if type(g) == str:
+            g = cairo.ImageSurface.create_from_png(g)
+        elif type(g) != cairo.ImageSurface:
+            return
         w, h = g.get_width(), g.get_height()
+
         if alignment in [4,5,6]:
             y -= int(h/2)
         elif alignment in [1,2,3]:
@@ -125,6 +123,7 @@ class CG(object):
             x -= int(w/2)
         elif alignment in [9,6,3]:
             x -= w
+
         self.context.set_source_surface(g, x, y)
         self.context.rectangle(x, y, x + w, y + h)
         self.context.fill()

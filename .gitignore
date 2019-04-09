@@ -1,4 +1,6 @@
 __pycache__/
 *.pyc
 backgrounds/
-test.png
+res/
+test*
+
