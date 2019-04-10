@@ -1,14 +1,27 @@
 #!/usr/bin/env python3
+"""
+
+This script creates a markdown table with a preview of all color presets available.
+Resulting table is a part of README.md
+
+"""
 
 from nxcg.colors import COLOR_PRESETS
 
+COLUMNS = 4
 
 with open("color-palette.md", "w") as f:
-    f.write("| Color | Name |\n")
-    f.write("|-------|------|\n")
-    for color_name in COLOR_PRESETS:
+    data = list(COLOR_PRESETS.keys())
+    f.write("|" + "|".join([" Color | Name "]*COLUMNS) + "|\n")
+    f.write("|" + "|".join(["-------|------"]*COLUMNS) + "|\n")
 
-        value = COLOR_PRESETS[color_name][0:7]
-        img = "![{}](https://placehold.it/20/{}/000000?text=+)".format(value, value.lstrip("#"))
-
-        f.write("| {} | {} |\n".format(img, color_name))
+    while True:
+        d = []
+        for i in range(COLUMNS):
+            try:
+                d.append(data.pop(0))
+            except IndexError:
+                d.append(False)
+        if not any(d):
+            break
+        f.write("|" + "|".join([" ![{}](https://placehold.it/20/{}/000000?text=+) | {} ".format(COLOR_PRESETS[key], COLOR_PRESETS[key][0:7].lstrip("#") , key) for key in d if key]) + "|\n")
