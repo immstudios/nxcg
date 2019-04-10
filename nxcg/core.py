@@ -47,9 +47,9 @@ class CG(object):
         return True
 
     def new(self, width, height):
-        self.width  = width
-        self.height = height
-        self.surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, width, height)
+        self.width  = int(width)
+        self.height = int(height)
+        self.surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, self.width, self.height)
         self.context = cairo.Context(self.surface)
         self.pango = False
         self.safe_vals = {
