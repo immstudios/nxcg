@@ -1,12 +1,17 @@
 import sys
 
-from io import StringIO
+from io import BytesIO
 
 from .common import *
 from .colors import *
 from .fonts import *
 from .plugins import *
 from .safe_area import *
+
+
+def text_escape(s):
+    s = str(s)
+    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
 class CGPango(object):
@@ -84,7 +89,7 @@ class CG(object):
 
     @property
     def png(self):
-        output = StringIO.StringIO()
+        output = BytesIO()
         self.surface.write_to_png(output)
         return output.getvalue()
 
@@ -147,6 +152,9 @@ class CG(object):
                     9 : Pango.Alignment.RIGHT
                     }[int(kwargs["align"])]
                 )
+
+        if kwargs.get("escape", True):
+            text = text_escape(text)
 
         if Pango.find_base_dir(text, len(text)) == Pango.Direction.RTL:
             text = "<span gravity=\"west\">{}</span>".format(text)
