@@ -178,3 +178,23 @@ class CG(object):
         self.pango.context.move_to(0, 50)
         PangoCairo.show_layout(self.pango.context, self.pango.layout)
         self.glyph(self.pango.surface, x, y - 50 )
+
+
+    def get_text_surface(self, x=0, y=0):
+        surface = cairo.ImageSurface(
+                cairo.FORMAT_ARGB32,
+                self.width,
+                self.height
+            )
+        context = cairo.Context(surface)
+        PangoCairo.show_layout(self.pango.context, self.pango.layout)
+        context.set_source_surface(self.pango.surface, x, y)
+        context.rectangle(
+                0, 
+                0, 
+                self.pango.surface.get_width(), 
+                self.pango.surface.get_height()
+            )
+        context.fill()
+        return surface
+
